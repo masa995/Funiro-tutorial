@@ -1,0 +1,12 @@
+//Только если меньше контайнера
+// calc (20px + (50 - 20) * ((100vw - 320px) / (1600 - 320)))
+//$addSize -  Получается вычитанием из максимального значения св-ва минимальное.
+//widthContainer - размер макета
+//$minSize - минимальное значение св-ва
+//$startsize - начальное значение в соответсвие с макетом
+//
+
+@mixin adaptiv-value($property, $startSize, $minSize, $widthContainer) {
+  $addSize: $startSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / (#{$widthContainer} - 320)));
+}

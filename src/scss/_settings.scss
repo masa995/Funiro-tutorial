@@ -1,0 +1,73 @@
+html {
+  box-sizing: border-box; /*свойства width и height включают в себя значения полей (padding) и границ (border), но не отступов (margin).*/
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /*Все элементы наследуют значение своего родителя. В данном случае у всех элементов значение box-sizing: border-box*/
+}
+
+body {
+  font-family: $fontFamily, sans-serif;
+  font-size: $fontSize + px;
+  color: $mainColor;
+  background-color: #f9f1e7;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lock {
+  overflow: hidden;
+}
+
+//Wrapper
+
+.wrapper {
+  width: 100%;
+  min-height: 100%; //для того чтобы футер прижать к низу
+  overflow: hidden;
+  display: flex; //для того чтобы футер прижать к низу
+  flex-direction: column; //для того чтобы футер прижать к низу
+}
+
+//Container
+
+._container {
+  max-width: $maxWidthContainer + px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+//подключаем повторяющиеся элементы
+// @import "repeatElem.scss";
+// /Header and Footer/
+// <!--подключаем header-->
+@import "./components/header.scss";
+// <!--подключаем footer-->
+// @import "footer.scss";
+
+//class main
+.page {
+  padding: 90px 0 0 0;
+  flex: 1 1 auto; //для того чтобы футер прижать к низу
+
+  @media (max-width: $md3 + px) {
+    padding: 30px 0 0 0;
+  }
+}
