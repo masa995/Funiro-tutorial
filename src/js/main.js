@@ -26,16 +26,18 @@ window.onload = function () {//весь контент загрузися и с�
     }
 
     if (window.innerWidth < 768) {
-      if (targetElement.closest('.js-accordion__item-menu')) {
-        // && (targetElement.classList.contains('js-accordion__header-menu'))) {
+      if (targetElement.closest('.js-accordion__item-menu') && (targetElement.classList.contains('js-accordion__header-menu'))) {
         let elem = targetElement.closest('.js-accordion__item-menu');
-        console.log(targetElement);
+        elem.classList.toggle('_active');
+      } else if (targetElement.closest('.js-accordion__item-menu') && targetElement.classList.contains('js-accordion__btn-menu')) {
+        let elem = targetElement.closest('.js-accordion__item-menu');
         elem.classList.toggle('_active');
       }
 
-      else if (targetElement.closest('.js-accordion__item-menu') && targetElement.classList.contains('js-accordion__btn-menu')) {
-        let elem = targetElement.closest('.js-accordion__item-menu');
-        elem.classList.toggle('_active');
+      if (targetElement.classList.contains('search-form__icon')) {
+        document.querySelector('.search-form').classList.toggle('_active');
+      } else if (!targetElement.closest('.search-form') && document.querySelector('.search-form._active')) {
+        document.querySelector('.search-form').classList.remove('_active');
       }
     }
   }
