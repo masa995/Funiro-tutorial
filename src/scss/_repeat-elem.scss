@@ -1,0 +1,30 @@
+._footer-title {
+  line-height: 29 / 24 * 100%;
+  color: #000;
+  font-weight: 700;
+  font-size: 24px;
+  @media (max-width: $md1+px) {
+    @include adaptiv-value("font-size", 24, 20, 1270);
+  }
+}
+
+@media (max-width: $md3+px) {
+  .js-accordion__item-menu .js-accordion__body-menu {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease 0s;
+    padding: 0 15px 0;
+    pointer-events: none;
+  }
+
+  .js-accordion__item-menu._active .js-accordion__body-menu {
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+    padding: 15px;
+    height: auto;
+    pointer-events: auto;
+  }
+}

@@ -175,24 +175,6 @@
       &:last-child {
         margin-bottom: 0;
       }
-      & .menu__sub-list {
-        height: 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        transition: all 0.5s;
-        padding: 0;
-        pointer-events: none;
-      }
-
-      &._active .menu__sub-list {
-        transform: translateY(0px);
-        opacity: 1;
-        visibility: visible;
-        padding: 15px;
-        height: auto;
-        pointer-events: auto;
-      }
 
       &._active .menu__arrow {
         transform: rotate(-180deg);
@@ -345,6 +327,10 @@
     margin: 0 20px 0 0;
     color: $darkGrayColor;
     border: none;
+
+    &:focus {
+      outline: $orangeColor;
+    }
   }
 }
 
