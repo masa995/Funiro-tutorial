@@ -111,36 +111,43 @@
 
     @media (max-width: $md3+px) {
       @include adaptiv-value("margin-bottom", 40, 30, 1270);
+
+      &._active .menu-footer__button{
+        transform: rotate(-180deg);
+      }
+
+      &._active .menu-footer__button,
+      &._active .menu-footer__title{
+        color: $orangeColor;
+      }
+    }
+  }
+
+  &__item-header{
+    @media (min-width: $md3+px) {
+      margin: 0 0 16px/24px * 1em 0; 
+    }
+    
+    @media (max-width: $md3+px){
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
   &__title {
-    cursor: default;
-
-    @media (min-width: $md3+px) {
-      margin: 0 0 16px/24px * 1em 0;
+   @media (max-width: $md3+px){
+      transition: all 0.3s ease 0s;
     }
+  }
 
-    @media (max-width: $md3+px) {
-      & {
-        cursor: pointer;
-        display: flex;
-        width: 100%;
-        flex-direction: row-reverse; //изменение направление элементов в строке
-        justify-content: space-between;
-        font-family: $fontFamily, sans-serif !important;
-        &::before {
-          font-family: "icons", sans-serif;
-          font-size: 12px;
-          transition: transform 0.3 ease 0s;
-        }
-      }
+  &__button{
+    display: none;
 
-      ._active & {
-        &::before {
-          transform: rotate(-180deg);
-        }
-      }
+    @media (max-width: $md3+px){
+      display: block;
+      font-size: 14px;
+      transition: all 0.3s ease 0s;
     }
   }
 
@@ -154,7 +161,11 @@
     }
 
     @media (max-width: $md3+px) {
-      padding: 15px 0 0 0;
+      padding: 0 15px 0;
+
+      & ._active {
+        padding: 0 15px;
+      }
     }
   }
 

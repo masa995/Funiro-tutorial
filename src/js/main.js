@@ -1,11 +1,7 @@
 window.onload = function () {//весь контент загрузися и срабатывает ф-ция
+  // window.addEventListener('load resize', function () {
   document.addEventListener('click', documentActions);
   //слушаем клики по всей странице
-
-  const btnMenuArrow = document.querySelectorAll('.js-menu__icon');
-
-  footerMenuArrow();
-
 
   function documentActions(e) {
     const targetElement = e.target; //обеект на который мы нажали на всем документов
@@ -55,19 +51,5 @@ window.onload = function () {//весь контент загрузися и с�
     */
 
     return typeof window.ontouchstart !== 'undefined';
-  }
-
-  function footerMenuArrow() {
-    if (btnMenuArrow) {
-      btnMenuArrow.forEach((el) => {
-        el.classList.remove('_icon-arrow-down');
-      });
-
-      if (window.innerWidth < 768) {
-        btnMenuArrow.forEach((el) => {
-          el.classList.add('_icon-arrow-down');
-        });
-      }
-    }
   }
 }
