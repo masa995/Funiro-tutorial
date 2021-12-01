@@ -1,0 +1,310 @@
+.main-slider {
+  background-color: #fcf8f3;
+
+  // .main-slider__container
+
+  &__container {
+    position: relative;
+    @media (min-width: $md2+px) {
+      //темная область
+      &::before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        width: 100vw; //на всю ширину
+        right: 376px; //сдвиг справа
+        height: 100%;
+        background-color: #f9f1e7;
+      }
+    }
+  }
+
+  // .main-slider__body
+
+  &__body {
+    padding: 140px 0 0 0; //отступ сверху
+    position: relative;
+    z-index: 2; //плашка поверх слайдера
+    @media (max-width: $md2+px) {
+      padding: 80px 0 0 0;
+    }
+
+    @media (max-width: $md3+px) {
+      padding: 50px 0 0 0;
+    }
+
+    @media (min-width: $md2+px) {
+      display: flex;
+    }
+  }
+
+  // .main-slider__content
+
+  &__content {
+    align-self: flex-start; //прибиваем карточку к верху (+ аккуратнее смотрится если нет контента)
+    flex: 0 0 494/1240 * 100%; //для части с меню в процентном соотношение высчитываем ширину для адаптивности
+    margin-bottom: 80px;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("margin-bottom", 80, 15, 1270);
+    }
+
+    @media (max-width: $md2+px) {
+      margin: 0 -15px;
+    }
+  }
+
+  // .main-slider__slider
+
+  &__slider {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self: flex-end; // прибиваем к низу относительно оси - убираем отступ
+
+    @media (min-width: $md2+px) {
+      padding: 0 0 0 32px;
+    }
+  }
+}
+
+.content-main {
+  position: relative;
+  z-index: 5;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.72);
+
+  @media (max-width: $md1+px) {
+    @include adaptiv-value("padding", 60, 15, 1270);
+  }
+
+  @media (min-width: $md2+px) {
+    background-color: rgba(255, 255, 255, 0.9);
+
+    // Если браузер поддерживает background-filter
+    //
+    //backdrop-filter - позволяет применить эффекты вроде размытия к области фонового рисунка, расположенной за элементом. Чтобы эффект стал заметен, сам элемент должен быть частично прозрачным.
+
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+      background-color: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(31px);
+    }
+  }
+
+  // .content-main__title
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 120%;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 56, 24, 1270);
+    }
+
+    // фишка если нет внизу текста и других элементов
+    &:not(:last-child) {
+      margin: 0 0 16px/56px * 1em 0;
+    }
+  }
+
+  // .content-main__text
+
+  &__text {
+    font-size: 20px;
+    font-weight: 500;
+    color: $grayColor;
+    line-height: 150%;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 20, 16, 1270);
+    }
+
+    // фишка если нет внизу текста и других элементов
+    &:not(:last-child) {
+      margin: 0 0 48px/20px * 1em 0;
+    }
+  }
+  // .content-main__button
+  &__button {
+    min-height: 78px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: $orangeColor;
+    color: #fff;
+    transition: background-color 0.3s ease 0s;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("min-hight", 78, 45, 1270);
+      @include adaptiv-value("font-size", 20, 16, 1270);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #966749;
+      }
+    }
+  }
+}
+
+.slider-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; //прижимаем слайдер к правому краю
+
+  @media (max-width: $md2+px) {
+    align-items: stretch; //растягиваем слайдер
+    flex-direction: column-reverse;
+  }
+
+  // .slider-main__controls
+
+  &__controls {
+    margin: 0 0 20px 0;
+    align-self: stretch;
+
+    @media (max-width: $md2+px) {
+      margin: 10px 0 20px 0; //отступ для элементов управления, когда перестраевается слайдер
+    }
+  }
+
+  // .slider-main__body
+
+  &__body {
+    margin-left: 0;
+    margin-right: 0;
+    overflow: visible; //отменить поведение по умолчанию, которое скрывает соседние слайды
+    @media (min-width: $md2+px) {
+      @include adaptiv-value("width", 934, 290, 1270); //min-размер слайда
+    }
+
+    @media (max-width: $md2+px) {
+      margin: 0 -15px; //убираем отступ у слайдов
+    }
+  }
+
+  // .slider-main__slide
+
+  &__slide {
+    position: relative;
+  }
+
+  // .slider-main__image
+
+  &__image {
+    padding: 0 0 59.1% 0;
+  }
+
+  // .slider-main__content
+
+  &__content {
+    z-index: 10;
+    right: 40px;
+    bottom: 40px;
+    min-width: 295px; // специально для изменения контента на малых разрешениях
+    max-height: 300px; // специально для изменения контента на малых разрешениях
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    color: inherit;
+    overflow: auto; // специально для изменения контента на малых разрешениях
+    background-color: rgba(255, 255, 255, 0.9);
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("right", 40, 0, 1270);
+      @include adaptiv-value("bottom", 40, 0, 1270);
+      @include adaptiv-value("padding", 24, 15, 1270);
+    }
+
+    @media (min-width: $md3+px) {
+      position: absolute; //плашка поверх слайда
+      min-width: 350px;
+    }
+
+    // Если браузер поддерживает background-filter
+    //
+    //backdrop-filter - позволяет применить эффекты вроде размытия к области фонового рисунка, расположенной за элементом. Чтобы эффект стал заметен, сам элемент должен быть частично прозрачным.
+
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+      background-color: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(31px);
+    }
+  }
+
+  // .slider-main__title
+
+  &__title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 120%;
+
+    &:not(:last-child) {
+      margin: 0 0 4px/28px * 1em 0;
+    }
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 28, 22, 1270);
+    }
+  }
+
+  // .slider-main__text
+
+  &__text {
+    line-height: 150%;
+    color: $grayColor;
+
+    &:not(:last-child) {
+      margin: 0 0 8px/16px * 1em 0;
+    }
+  }
+
+  // .slider-main__price
+
+  &__price {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 150%;
+    font-family: $fontFamily, sans-serif !important;
+    font-weight: 600;
+    font-size: 20px;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 20, 16, 1270);
+    }
+
+    &::before {
+      margin: 0 0 0 10px;
+      font-size: 12px;
+      font-family: "icons";
+    }
+  }
+}
+
+.controls-slider-main {
+  // .controls-slider-main__dotts
+  display: flex;
+  align-items: center;
+
+  &__dotts {
+    flex: 1 1 auto; //для того чтобы точки занимали все возможное место, а затем переносились
+
+    @media (min-width: $md2+px) {
+      padding: 0 20px 0 0; // отступ безопасности. Точки не прилипли к стрелочкам
+    }
+
+    @media (max-width: $md2+px) {
+      justify-content: center;
+    }
+  }
+
+  // .controls-slider-main__arrows
+
+  &__arrows {
+    @media (max-width: $md2+px) {
+      display: none;
+    }
+  }
+}

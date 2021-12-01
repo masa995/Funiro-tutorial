@@ -56,22 +56,9 @@ button {
   margin: 0 auto;
 }
 
-//подключаем повторяющиеся элементы
-// @import "repeatElem.scss";
-// /Header and Footer/
-// <!--подключаем header-->
-@import "./components/header.scss";
-// <!--подключаем footer-->
-// @import "footer.scss";
-
 //class main
 .page {
-  padding: 90px 0 0 0;
   flex: 1 1 auto; //для того чтобы футер прижать к низу
-
-  @media (max-width: $md3+px) {
-    padding: 30px 0 0 0;
-  }
 }
 
 .scroll-on {
@@ -89,4 +76,21 @@ button {
   left: 0;
   top: 0;
   width: 100%;
+}
+
+.ibg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.ibg img {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
 }
