@@ -52,4 +52,19 @@ window.onload = function () {//весь контент загрузися и с�
 
     return typeof window.ontouchstart !== 'undefined';
   }
+
+  //Header
+  const headerElem = document.querySelector('.header');
+
+  const callback = function (entries, observer) {
+    if (entries[0].isIntersecting) {
+      headerElem.classList.remove('_scroll');
+    } else {
+      headerElem.classList.add('_scroll');
+    }
+  }
+
+  const headerObserver = new IntersectionObserver(callback);
+
+  headerObserver.observe(headerElem);
 }
