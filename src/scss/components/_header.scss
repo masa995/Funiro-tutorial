@@ -443,6 +443,35 @@
 
   //.cart-header__body
   &__body {
+    background: #f4f5f7;
+    border: 1px solid #e0e0e0;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 15px;
+    width: 300px;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all ease 0s;
+    transform: translate(0px, 20px);
+
+    ._active & {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(0px, 0px);
+    }
+
+    @media (max-width: $md2+px) {
+      top: 50px;
+    }
+
+    @media (max-width: $md3+px) {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 100%;
+    }
   }
 
   //.cart-header__list

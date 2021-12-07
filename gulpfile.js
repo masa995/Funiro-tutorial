@@ -86,7 +86,6 @@ function scripts() {
 			presets: ['@babel/env']
 		}))
 		.pipe(concat('main.js'))
-		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
 		.pipe(dest('./app/js'))
 		.pipe(browserSync.stream());
@@ -185,6 +184,11 @@ function resources() {
 		.pipe(dest('./app/resources'));
 }
 
+function json() {
+	return src('./src/json/**/*.*')
+		.pipe(dest('./app/json'));
+}
+
 function fonts() {
 	src('./src/fonts/**.ttf')
 		.pipe(ttf2woff())
@@ -203,6 +207,7 @@ function watchFiles() {
 	watch('./src/img/*.*', images);
 	watch('./src/img/svg/**/*.*', svgSprit);
 	watch('./src/resources/**/*.*', resources);
+	watch('./src/json/**/*.*', json);
 	watch('./src/fonts/**/*.ttf', fonts);
 }
 
@@ -212,5 +217,5 @@ exports.scripts = scripts;
 
 exports.watchFiles = watchFiles;
 exports.browsersync = browsersync;
-exports.default = series(cleanApp, imagesWebp, images, parallel(html, styles, scripts, svgSprit, fonts, resources, watchFiles, browsersync));
-exports.build = series(cleanApp, imagesWebpBuild, imagesBuild, parallel(htmlBuild, stylesBuild, scriptsBuild, svgSpritBuild, fonts, resources));
+exports.default = series(cleanApp, imagesWebp, images, parallel(html, styles, scripts, svgSprit, fonts, resources, json, watchFiles, browsersync));
+exports.build = series(cleanApp, imagesWebpBuild, imagesBuild, parallel(htmlBuild, stylesBuild, scriptsBuild, svgSpritBuild, fonts, resources, json));

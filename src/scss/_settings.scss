@@ -14,7 +14,7 @@ body {
   font-family: $fontFamily, sans-serif;
   font-size: $fontSize + px;
   color: $mainColor;
-  background-color: #f9f1e7;
+  background-color: #fff;
 }
 
 ul {
@@ -93,4 +93,10 @@ button {
   left: 0;
   opacity: 0;
   visibility: hidden;
+}
+
+._flyImage {
+  position: fixed;
+  z-index: 100;
+  transition: all 1.5s ease 0s;
 }

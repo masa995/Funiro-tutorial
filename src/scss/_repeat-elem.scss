@@ -1,3 +1,10 @@
+._title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+  text-align: center;
+}
+
 ._footer-title {
   line-height: 29 / 24 * 100%;
   color: #000;
@@ -37,6 +44,20 @@
   text-align: center;
   transition: all 0.3s ease 0s;
   min-height: 48px;
+
+  &_white {
+    // .btn_white
+    color: $orangeColor;
+    background-color: #fff;
+    transition: all 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $orangeColor;
+        color: #fff;
+      }
+    }
+  }
 }
 
 //Slider controls

@@ -1,0 +1,250 @@
+.products {
+  padding-bottom: 44px;
+
+  @media (max-width: $md1+px) {
+    @include adaptiv-value("padding-bottom", 44, 30, 1270);
+  }
+  // .products__container
+
+  &__container {
+  }
+
+  // .products__title
+
+  &__title {
+    margin: 0 0 32px/40px * 1em 0;
+  }
+
+  // .products__items
+
+  &__items {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); //auto-fit- на всю длину контейнера
+  }
+
+  // .products__item
+
+  &__item {
+  }
+
+  // .products__footer
+
+  &__footer {
+    padding: 32px 0 0 0;
+    text-align: center;
+  }
+
+  // .products__more
+
+  &__more {
+    border: 1px solid $orangeColor;
+    min-width: 245px;
+  }
+}
+
+.item-product {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #f4f5f7;
+
+  @media (any-hover: hover) {
+    &:hover {
+      .item-product__actions {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  // .item-product__labels
+
+  &__labels {
+    position: absolute;
+    z-index: 2;
+    right: 24px;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $md1) {
+      @include adaptiv-value("right", 24, 10, 1270);
+      @include adaptiv-value("top", 24, 10, 1270);
+    }
+  }
+
+  // .item-product__label
+
+  &__label {
+    flex: 0 0 48px;
+    width: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+
+    &:not(:last-child) {
+      margin: 0 0 10px 0;
+    }
+
+    // .item-product__label_sale
+    &_sale {
+      background: #e97171;
+    }
+
+    &_new {
+      background: #2ec1ac;
+    }
+  }
+
+  // .item-product__image
+
+  &__image {
+    padding: 0 0 301px/285px * 100% 0; //высоту делить на ширину
+  }
+
+  // .item-product__body
+
+  &__body {
+    flex: 1 1 auto; //предугадывание увеличения
+    padding: 16px 16px 30px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .item-product__content
+
+  &__content {
+    flex: 1 1 auto; //предугадывание увеличения
+  }
+
+  // .item-product__title
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 120%;
+    margin: 0 0 8px/24px * 1em 0;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 24, 30, $md1);
+    }
+  }
+
+  // .item-product__text
+
+  &__text {
+    line-height: 150%;
+    color: $grayColor;
+    margin: 0 0 8px/24px * 1em 0;
+  }
+
+  // .item-product__prices
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 150%;
+  }
+
+  // .item-product__price
+
+  &__price {
+    font-size: 20px;
+    font-weight: 600;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 20, 16, $md1);
+    }
+    // .item-product__price_old
+
+    &_old {
+      font-size: 16px;
+      font-weight: normal;
+      margin: 0 0 0 16px;
+      color: #b0b0b0;
+      text-decoration: line-through;
+
+      @media (max-width: $md1+px) {
+        @include adaptiv-value("font-size", 20, 16, $md1);
+      }
+    }
+  }
+
+  // .item-product__actions
+
+  &__actions {
+    @media (any-hover: none) {
+      //нет хавер
+      padding-top: 15px;
+    }
+    @media (any-hover: hover) {
+      //естть хавер
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(58, 58, 58, 0.74);
+      transition: all 0.3s ease 0s;
+    }
+  }
+}
+.actions-product {
+  // .actions-product__body
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  // .actions-product__button
+
+  &__button {
+    flex: 1 1 100%; //офигевшая кнопка
+    &:not(:last-child) {
+      margin: 0 0 24px 0;
+    }
+
+    &._hold {
+      opacity: 0.2;
+      cursor: default;
+    }
+  }
+
+  // .actions-product__link
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-weight: 600;
+    font-family: $fontFamily, sans-serif !important;
+
+    &::before {
+      margin: 0 10px 0 0;
+      font-size: 16px;
+      font-family: "icons";
+    }
+
+    @media (any-hover: hover) {
+      color: #fff;
+      transition: color 0.3s ease 0s;
+
+      &:hover {
+        color: $orangeColor;
+      }
+    }
+  }
+}
