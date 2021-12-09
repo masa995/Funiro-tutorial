@@ -219,6 +219,9 @@ burger.addEventListener('click', function () {
 });
 "use strict";
 
+var _require = require("swiper"),
+    Swiper = _require["default"];
+
 if (document.querySelector('.slider-main__body')) {
   new Swiper('.slider-main__body', {
     observer: true,
@@ -288,6 +291,35 @@ if (document.querySelector('.slider-rooms__body')) {
     navigation: {
       nextEl: '.slider-rooms .slider-arrow__next',
       prevEl: '.slider-rooms .slider-arrow__prev'
+    }
+  });
+}
+
+if (document.querySelector('.slider-tips__body')) {
+  new Swiper('.slider-tips__body', {
+    observer: true,
+    //Установите значение true для включения наблюдателя изменений Swiper и его элементов.
+    observeParents: true,
+    //Установите true если вам также нужно следить за изменений родительских элементов Swiper
+    slidesPerView: 3,
+    //Кол-во слайдовб которые видны одновременно в контейнере слайдера
+    spaceBetween: 32,
+    //Растояние между слайдом
+    watchOverflow: true,
+    //Будут скрыты кнопки навигации, если слайдов недостаточно для анимации слайдов.
+    speed: 800,
+    //Скорость слайдов
+    loop: true,
+    //Бесконечное движение слайдов
+    pagination: {
+      el: '.slider-tips__dotts',
+      clickable: true //можно кликаить по точкам
+
+    },
+    // Navigation arrows
+    navigation: {
+      nextEl: '.slider-tips .slider-arrow__next',
+      prevEl: '.slider-tips .slider-arrow__prev'
     }
   });
 }
