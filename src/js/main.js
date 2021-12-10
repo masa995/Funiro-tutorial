@@ -66,7 +66,6 @@ window.onload = function () {
         document.querySelector('.cart-header').classList.toggle('_active');
       }
     } else if (!targetElement.closest('.cart-header') && !targetElement.classList.contains('actions-product__button')) {
-      console.log("Qqqq");
       document.querySelector('.cart-header').classList.remove('_active');
     }
   }

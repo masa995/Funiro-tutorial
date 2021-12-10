@@ -70,7 +70,7 @@
 
   &__slider {
     flex: 1 1 auto;
-    min-width: 0; //отболезни слайдера когода он флекс элемент
+    min-width: 0; //от болезни слайдера, когода он флекс элемент
     align-self: flex-start;
 
     @media (max-width: $md4+px) {
@@ -207,6 +207,10 @@
     @media (min-width: $md1+px) {
       left: -24px;
       width: calc(100% + 48px); //48 ширина стрелочки
+    }
+
+    @media (max-width: $md3+px) {
+      display: none;
     }
   }
 

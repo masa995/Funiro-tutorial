@@ -219,9 +219,6 @@ burger.addEventListener('click', function () {
 });
 "use strict";
 
-var _require = require("swiper"),
-    Swiper = _require["default"];
-
 if (document.querySelector('.slider-main__body')) {
   new Swiper('.slider-main__body', {
     observer: true,
@@ -311,6 +308,23 @@ if (document.querySelector('.slider-tips__body')) {
     //Скорость слайдов
     loop: true,
     //Бесконечное движение слайдов
+    breakpoints: {
+      // >= 320 px
+      320: {
+        slidesPerView: 1.1,
+        spaceBetween: 15
+      },
+      // >=768 px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      // >= 992 px
+      992: {
+        slidesPerView: 3,
+        spaceBetween: 32
+      }
+    },
     pagination: {
       el: '.slider-tips__dotts',
       clickable: true //можно кликаить по точкам
@@ -394,7 +408,6 @@ window.onload = function () {
         document.querySelector('.cart-header').classList.toggle('_active');
       }
     } else if (!targetElement.closest('.cart-header') && !targetElement.classList.contains('actions-product__button')) {
-      console.log("Qqqq");
       document.querySelector('.cart-header').classList.remove('_active');
     }
   }

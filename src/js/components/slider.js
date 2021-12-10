@@ -1,5 +1,3 @@
-const { default: Swiper } = require("swiper");
-
 if (document.querySelector('.slider-main__body')) {
   new Swiper('.slider-main__body', {
     observer: true, //Установите значение true для включения наблюдателя изменений Swiper и его элементов.
@@ -62,6 +60,26 @@ if (document.querySelector('.slider-tips__body')) {
     watchOverflow: true, //Будут скрыты кнопки навигации, если слайдов недостаточно для анимации слайдов.
     speed: 800, //Скорость слайдов
     loop: true, //Бесконечное движение слайдов
+
+    breakpoints: {
+      // >= 320 px
+      320: {
+        slidesPerView: 1.1,
+        spaceBetween: 15
+      },
+
+      // >=768 px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+
+      // >= 992 px
+      992: {
+        slidesPerView: 3,
+        spaceBetween: 32
+      }
+    },
 
     pagination: {
       el: '.slider-tips__dotts',
