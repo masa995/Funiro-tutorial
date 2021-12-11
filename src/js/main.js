@@ -70,16 +70,6 @@ window.onload = function () {
     }
   }
 
-  function isTouchDevice() {
-    /* сначала выполняется typeof
-      если св-во ontouchstart объекта window нет то, оно возвращает undefined
-      если есть, то object
-      затем идет проверка на undefined
-    */
-
-    return typeof window.ontouchstart !== 'undefined';
-  }
-
   //Header
   const headerElem = document.querySelector('.header');
 
@@ -96,6 +86,16 @@ window.onload = function () {
   const headerObserver = new IntersectionObserver(callback);
 
   headerObserver.observe(headerElem);
+}
+
+function isTouchDevice() {
+  /* сначала выполняется typeof
+    если св-во ontouchstart объекта window нет то, оно возвращает undefined
+    если есть, то object
+    затем идет проверка на undefined
+  */
+
+  return typeof window.ontouchstart !== 'undefined';
 }
 
 //Load More Products
@@ -325,4 +325,54 @@ function updateCart(productButton, productId, productAdd = true) {
       cartQuantity.remove();
     }
   }
+}
+
+//Furniture Gallery
+const furniture = document.querySelector('.furniture__body');
+if (furniture && !isTouchDevice()) {
+  const furnitureItems = document.querySelector('.furniture__items');
+  const furnitureColumn = document.querySelectorAll('.furniture__column');
+
+  //Скорость анимации
+  const speed = furniture.dataset.speed;
+
+  //Объявляем переменные
+  let positionX = 0;
+  let coordXprocent = 0;
+
+  function setMouseGalleryStyle() {
+    let furnitureItemsWidth = 0; //ширина всего контента в том числе и скрытого
+    furnitureColumn.forEach(elem => {
+      furnitureItemsWidth += elem.offsetWidth //offsetWidth = content + padding +  border + scroll
+    });
+
+    const furnitureDifferent = furnitureItemsWidth - furniture.offsetWidth;
+    const distX = Math.floor(coordXprocent - positionX); //cмещение
+
+    positionX = positionX + (distX * speed);
+    let position = furnitureDifferent / 200 * positionX;
+
+    furnitureItems.style.cssText = `transform: translate3d(${-position}px, 0, 0)`;
+
+    if (Math.abs(distX) > 0) {
+      requestAnimationFrame(setMouseGalleryStyle);
+    }
+    else {
+      furniture.classList.remove('_init');
+    }
+  }
+
+  furniture.addEventListener("mousemove", (e) => {
+
+    const furnitureWidth = furniture.offsetWidth; //ширина
+    const coordX = e.pageX - furnitureWidth / 2;// ноль посередине
+
+    coordXprocent = coordX / furnitureWidth * 200;//процент
+
+    if (!furniture.classList.contains('_init')) {
+      requestAnimationFrame(setMouseGalleryStyle);
+      furniture.classList.add('_init');
+    }
+
+  })
 }

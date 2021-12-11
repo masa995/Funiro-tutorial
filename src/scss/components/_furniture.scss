@@ -1,0 +1,135 @@
+.furniture {
+  padding-bottom: 85px;
+
+  @media (max-width: $md1+px) {
+    @include adaptiv-value("padding-bottom", 85, 40, $md1);
+  }
+
+  // .furniture__container
+
+  &__container {
+  }
+
+  // .furniture__label
+
+  &__label {
+    text-align: center;
+    color: $darkGrayColor;
+    line-height: 150%;
+
+    @media (max-width: $md1+px) {
+      @include adaptiv-value("font-size", 20, 16, $md1);
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 8px/20px * 1em 0;
+    }
+  }
+
+  // .furniture__title
+
+  &__title {
+    margin: 0 0 32px/40px * 1em 0;
+  }
+
+  // .furniture__body
+
+  &__body {
+    position: relative;
+
+    @media (any-hover: none) {
+      overflow: auto;
+      -webkit-overflow-scrolling: touch; //нестондартное св-во плавного скролла
+    }
+  }
+
+  // .furniture__items
+
+  &__items {
+    display: grid;
+    grid-template-columns: auto; //определяет количество, наименование и размер столбцов
+    grid-auto-flow: column; //пределяет, как работает алгоритм автоматического размещения
+    align-items: center;
+    gap: 16px;
+
+    @media (any-hover: hover) {
+      justify-content: center;
+    }
+  }
+
+  // .funiture__column
+
+  &__column {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 -8px;
+
+    &:first-child {
+      justify-content: flex-end;
+    }
+  }
+
+  // .furniture__row
+
+  &__row {
+    display: inline-grid;
+    padding: 0 8px;
+    grid-template-columns: auto; //определяет количество, наименование и размер столбцов
+    grid-auto-flow: column; //пределяет, как работает алгоритм автоматического размещения
+    gap: 16px;
+
+    &:not(:last-child) {
+      margin: 0 0 16px 0;
+    }
+  }
+}
+
+.row-furniture {
+  // .row-furniture__left-top
+
+  &__left-top {
+    justify-content: end;
+    align-items: end;
+  }
+
+  // .row-furniture__left-bottom
+
+  &__left-bottom {
+    justify-content: end;
+    align-items: start;
+  }
+
+  // .row-furniture__center
+
+  &__center {
+    display: block;
+  }
+
+  // .row-furniture__right-top
+
+  &__right-top {
+    align-items: end;
+  }
+
+  // .row-furniture__right-bottom
+
+  &__right-bottom {
+    align-items: start;
+  }
+
+  // .row-furniture__item
+
+  &__item {
+    @media (any-hover: hover) {
+      img {
+        transition: all 0.8s ease 0s;
+        filter: grayscale(1);
+      }
+
+      &:hover img {
+        filter: grayscale(0);
+      }
+    }
+  }
+}

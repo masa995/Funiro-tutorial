@@ -219,6 +219,15 @@ burger.addEventListener('click', function () {
 });
 "use strict";
 
+//lightgallery js
+lightGallery(document.getElementById('lightgallery'), {
+  selector: '.row-furniture__item',
+  licenseKey: '0000-0000-000-0000',
+  plugins: [lgAutoplay],
+  speed: 500
+});
+"use strict";
+
 if (document.querySelector('.slider-main__body')) {
   new Swiper('.slider-main__body', {
     observer: true,
@@ -410,15 +419,6 @@ window.onload = function () {
     } else if (!targetElement.closest('.cart-header') && !targetElement.classList.contains('actions-product__button')) {
       document.querySelector('.cart-header').classList.remove('_active');
     }
-  }
-
-  function isTouchDevice() {
-    /* сначала выполняется typeof
-      если св-во ontouchstart объекта window нет то, оно возвращает undefined
-      если есть, то object
-      затем идет проверка на undefined
-    */
-    return typeof window.ontouchstart !== 'undefined';
   } //Header
 
 
@@ -435,7 +435,16 @@ window.onload = function () {
 
   var headerObserver = new IntersectionObserver(callback);
   headerObserver.observe(headerElem);
-}; //Load More Products
+};
+
+function isTouchDevice() {
+  /* сначала выполняется typeof
+    если св-во ontouchstart объекта window нет то, оно возвращает undefined
+    если есть, то object
+    затем идет проверка на undefined
+  */
+  return typeof window.ontouchstart !== 'undefined';
+} //Load More Products
 
 
 function getProducts(button) {
@@ -616,5 +625,50 @@ function updateCart(productButton, productId) {
       cartQuantity.remove();
     }
   }
+} //Furniture Gallery
+
+
+var furniture = document.querySelector('.furniture__body');
+
+if (furniture && !isTouchDevice()) {
+  var setMouseGalleryStyle = function setMouseGalleryStyle() {
+    var furnitureItemsWidth = 0; //ширина всего контента в том числе и скрытого
+
+    furnitureColumn.forEach(function (elem) {
+      furnitureItemsWidth += elem.offsetWidth; //offsetWidth = content + padding +  border + scroll
+    });
+    var furnitureDifferent = furnitureItemsWidth - furniture.offsetWidth;
+    var distX = Math.floor(coordXprocent - positionX); //cмещение
+
+    positionX = positionX + distX * speed;
+    var position = furnitureDifferent / 200 * positionX;
+    furnitureItems.style.cssText = "transform: translate3d(".concat(-position, "px, 0, 0)");
+
+    if (Math.abs(distX) > 0) {
+      requestAnimationFrame(setMouseGalleryStyle);
+    } else {
+      furniture.classList.remove('_init');
+    }
+  };
+
+  var furnitureItems = document.querySelector('.furniture__items');
+  var furnitureColumn = document.querySelectorAll('.furniture__column'); //Скорость анимации
+
+  var speed = furniture.dataset.speed; //Объявляем переменные
+
+  var positionX = 0;
+  var coordXprocent = 0;
+  furniture.addEventListener("mousemove", function (e) {
+    var furnitureWidth = furniture.offsetWidth; //ширина
+
+    var coordX = e.pageX - furnitureWidth / 2; // ноль посередине
+
+    coordXprocent = coordX / furnitureWidth * 200; //процент
+
+    if (!furniture.classList.contains('_init')) {
+      requestAnimationFrame(setMouseGalleryStyle);
+      furniture.classList.add('_init');
+    }
+  });
 }
 //# sourceMappingURL=main.js.map
