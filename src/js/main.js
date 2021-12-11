@@ -161,7 +161,7 @@ function loadProducts(data) {
 
     let productTemplateImage = `
   	<a href="${productUrl}" class="item-product__image ibg">
-  		<img src="../img/products/${productImage}" alt="${productTitle}">
+  		<img src="img/products/${productImage}" alt="${productTitle}">
   	</a>
   `;
 
