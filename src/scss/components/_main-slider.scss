@@ -140,7 +140,7 @@
       @include adaptiv-value("font-size", 20, 16, 1270);
     }
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: #966749;
       }

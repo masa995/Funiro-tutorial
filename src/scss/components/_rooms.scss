@@ -59,7 +59,7 @@
     background-color: $orangeColor;
     min-width: 180px;
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: #846146;
       }

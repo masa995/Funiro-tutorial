@@ -49,7 +49,7 @@
   position: relative;
   background-color: #f4f5f7;
 
-  @media (any-hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       .item-product__actions {
         opacity: 1;
@@ -178,11 +178,16 @@
   // .item-product__actions
 
   &__actions {
-    @media (any-hover: none) {
-      //нет хавер
+    &._non-hover {
+      opacity: 1;
+      visibility: visible;
+      position: static;
+      display: block;
       padding-top: 15px;
+      background-color: transparent;
     }
-    @media (any-hover: hover) {
+
+    @media (hover: hover) and (pointer: fine) {
       //естть хавер
       opacity: 0;
       visibility: hidden;
@@ -238,13 +243,20 @@
       font-family: "icons";
     }
 
-    @media (any-hover: hover) {
-      color: #fff;
+    @media (hover: hover) and (pointer: fine) {
       transition: color 0.3s ease 0s;
 
       &:hover {
         color: $orangeColor;
       }
+    }
+
+    &._hover {
+      color: #fff;
+    }
+
+    &._none-hover {
+      color: inherit;
     }
   }
 }

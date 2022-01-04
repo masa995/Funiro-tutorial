@@ -37,7 +37,7 @@
   &__body {
     position: relative;
 
-    @media (any-hover: none) {
+    &._non-hover {
       overflow: auto;
       -webkit-overflow-scrolling: touch; //нестондартное св-во плавного скролла
     }
@@ -52,8 +52,12 @@
     align-items: center;
     gap: 16px;
 
-    @media (any-hover: hover) {
+    &._hover {
       justify-content: center;
+    }
+
+    &._none-hover {
+      justify-content: flex-start;
     }
   }
 
@@ -121,13 +125,19 @@
   // .row-furniture__item
 
   &__item {
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       img {
         transition: all 0.8s ease 0s;
         filter: grayscale(1);
       }
 
       &:hover img {
+        filter: grayscale(0);
+      }
+    }
+
+    &._non-hover {
+      img {
         filter: grayscale(0);
       }
     }

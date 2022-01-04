@@ -1,7 +1,7 @@
 window.onload = function () {
   //весь контент загрузися и срабатывает ф-ция
-  document.addEventListener('click', documentActions);
   //слушаем клики по всей странице
+  document.addEventListener('click', documentActions);
 
   function documentActions(e) {
     const targetElement = e.target; //объект на который мы нажали на всем документов
@@ -70,6 +70,48 @@ window.onload = function () {
     }
   }
 
+  if ((window.innerWidth < 768) || (window.innerWidth > 768 && isTouchDevice())) {
+    const actionElems = document.querySelectorAll('.item-product__actions');
+    actionElems.forEach(el => {
+      el.classList.add('_non-hover');
+    });
+
+    const actionLinkElems = document.querySelectorAll('.actions-product__link');
+    actionLinkElems.forEach(el => {
+      el.classList.remove('_hover');
+      el.classList.add('_non-hover');
+    });
+
+    const furnitureBodyElem = document.querySelector('.furniture__body');
+    furnitureBodyElem.classList.add('_non-hover');
+
+    const rowFurnitureElems = document.querySelectorAll('.row-furniture__item')
+    rowFurnitureElems.forEach(el => {
+      el.classList.add('_non-hover');
+    })
+
+    const itemFurnitureElems = document.querySelectorAll('.furniture__items');
+    itemFurnitureElems.forEach(el => {
+      el.classList.remove('_hover');
+      el.classList.add('_non-hover');
+    });
+
+  }
+
+  if ((window.innerWidth > 768) && !isTouchDevice()) {
+    const actionLinkElems = document.querySelectorAll('.actions-product__link');
+    actionLinkElems.forEach(el => {
+      el.classList.add('_hover');
+      el.classList.remove('_non-hover');
+    });
+
+    const itemFurnitureElems = document.querySelectorAll('.furniture__items');
+    itemFurnitureElems.forEach(el => {
+      el.classList.add('_hover');
+      el.classList.remove('_non-hover');
+    });
+  }
+
   //Header
   const headerElem = document.querySelector('.header');
 
@@ -88,14 +130,18 @@ window.onload = function () {
   headerObserver.observe(headerElem);
 }
 
-function isTouchDevice() {
-  /* сначала выполняется typeof
-    если св-во ontouchstart объекта window нет то, оно возвращает undefined
-    если есть, то object
-    затем идет проверка на undefined
-  */
+function isTouchDevice(e) {
 
+  //   /* сначала выполняется typeof
+  //     если св-во ontouchstart объекта window нет то, оно возвращает undefined
+  //     если есть, то object
+  //     затем идет проверка на undefined
+  //   */
   return typeof window.ontouchstart !== 'undefined';
+
+  // if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+  //   return true;
+  // }
 }
 
 //Load More Products

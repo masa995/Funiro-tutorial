@@ -49,7 +49,7 @@
     flex-direction: column;
     transition: box-shadow 0.3s ease 0;
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         box-shadow: 0 0 32px rgba(97, 97, 97, 0.2);
       }
@@ -90,7 +90,7 @@
       @include adaptiv-value("font-size", 24, 18, $md1);
     }
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         color: $orangeColor;
       }

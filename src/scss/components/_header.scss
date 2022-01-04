@@ -12,7 +12,7 @@
     .header__wrapper {
       background-color: rgba(#fcf8f3, 0.8);
 
-      @media (any-hover) {
+      @media (hover: hover) and (pointer: fine) {
         background-color: rgba(#fcf8f3, 0.9);
       }
     }
@@ -152,7 +152,7 @@
     padding: 5px 0;
     position: relative;
 
-    @media (any-hover: hover) and (min-width: $md3+px) {
+    @media (hover: hover) and (pointer: fine) and (min-width: $md3+px) {
       //медиа запрос работает только с теми устройствами у которых есть событие hover(наведение мыши)
       &:hover {
         .menu__sub-list {
@@ -285,7 +285,7 @@
   &__sub-link {
     color: #fff;
     line-height: 120%;
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         text-decoration: underline;
       }
@@ -383,7 +383,7 @@
       color: #262f56;
       font-size: 24px;
       transition: color 0.3s ease 0s;
-      @media (any-hover: hover) {
+      @media (hover: hover) and (pointer: fine) {
         &:hover {
           color: $orangeColor;
         }
@@ -419,7 +419,7 @@
     position: relative;
     display: block;
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         color: $orangeColor;
       }

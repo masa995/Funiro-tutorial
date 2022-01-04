@@ -91,7 +91,7 @@
       @include adaptiv-value("margin-bottom", 16, 10, 1270);
     }
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         color: $orangeColor;
       }
@@ -112,23 +112,23 @@
     @media (max-width: $md3+px) {
       @include adaptiv-value("margin-bottom", 40, 30, 1270);
 
-      &._active .menu-footer__button{
+      &._active .menu-footer__button {
         transform: rotate(-180deg);
       }
 
       &._active .menu-footer__button,
-      &._active .menu-footer__title{
+      &._active .menu-footer__title {
         color: $orangeColor;
       }
     }
   }
 
-  &__item-header{
+  &__item-header {
     @media (min-width: $md3+px) {
-      margin: 0 0 16px/24px * 1em 0; 
+      margin: 0 0 16px/24px * 1em 0;
     }
-    
-    @media (max-width: $md3+px){
+
+    @media (max-width: $md3+px) {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -136,15 +136,15 @@
   }
 
   &__title {
-   @media (max-width: $md3+px){
+    @media (max-width: $md3+px) {
       transition: all 0.3s ease 0s;
     }
   }
 
-  &__button{
+  &__button {
     display: none;
 
-    @media (max-width: $md3+px){
+    @media (max-width: $md3+px) {
       display: block;
       font-size: 14px;
       transition: all 0.3s ease 0s;
@@ -176,7 +176,7 @@
     transition: color 0.3s ease 0;
     line-height: 120%;
     font-weight: 500;
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         color: $orangeColor;
       }
@@ -219,7 +219,7 @@
     color: #fff;
     transition: background-color, 0.3s ease 0;
 
-    @media (any-hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: #be825c;
       }
