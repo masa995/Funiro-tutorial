@@ -659,14 +659,24 @@
       <div class="footer__subscribe subscribe">
         <div class="subscribe__title _footer-title">Stay Updated</div>
         <form action="#" class="subscribe__form">
-          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Enter your email"
-            class="subscribe__input">
+          <input autocomplete="off" type="email" name="emailSubscribe" placeholder="Enter your email"
+            class="subscribe__input" data-validate-field="email">
           <button type="submit" class="subscribe__button _icon-send"></button>
         </form>
       </div>
     </div>
   </div>
 </footer>
+    <div class="popup">
+  <div class="popup__body">
+    <button type="button" class="popup__close js-popup-btn-close">
+      <span class="popup__close-elem"></span>
+      <span class="popup__close-elem"></span>
+    </button>
+
+    <h2 class="popup__title title">Thanks for subscribing!</h2>
+  </div>
+</div>
   </div>
 
   <script src="js/plugins.js"></script>

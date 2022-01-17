@@ -100,3 +100,16 @@ button {
   z-index: 100;
   transition: all 1.5s ease 0s;
 }
+
+.js-validate-error-field {
+  border: 3px solid $orangeColor !important;
+  color: $mainColor !important;
+}
+
+.js-validate-error-label {
+  position: absolute;
+  bottom: -20px;
+  left: 12px;
+  font-size: 16px;
+  color: $orangeColor !important;
+}

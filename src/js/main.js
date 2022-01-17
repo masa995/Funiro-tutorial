@@ -70,6 +70,7 @@ window.onload = function () {
     }
   }
 
+  //Hover for mobile
   if ((window.innerWidth < 768) || (window.innerWidth > 768 && isTouchDevice())) {
     const actionElems = document.querySelectorAll('.item-product__actions');
     actionElems.forEach(el => {
@@ -112,6 +113,10 @@ window.onload = function () {
     });
   }
 
+  //100vh
+  const vh = window.innerHeight;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   //Header
   const headerElem = document.querySelector('.header');
 
@@ -138,10 +143,6 @@ function isTouchDevice(e) {
   //     затем идет проверка на undefined
   //   */
   return typeof window.ontouchstart !== 'undefined';
-
-  // if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-  //   return true;
-  // }
 }
 
 //Load More Products
